@@ -162,7 +162,9 @@ a { color: inherit; text-decoration: none; }
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(160deg, #eaf6f8 0%, #fdfcf9 55%, #fdf6ea 100%);
+  background: linear-gradient(160deg, #eaf6f8 0%, #fdfcf9 45%, #fdf6ea 80%, #eaf6f8 100%);
+  background-size: 220% 220%;
+  animation: gradient-drift 16s ease infinite;
   text-align: center;
 }
 
@@ -251,6 +253,21 @@ a { color: inherit; text-decoration: none; }
   font-weight: 500;
   text-align: center;
   margin-bottom: 20px;
+}
+
+/* 見出しの下に金のラインがすっと引かれる */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-gold), #e6cf9b);
+  margin: 16px auto 0;
+  transition: width 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.45s;
+}
+
+.section-title.is-visible::after {
+  width: 64px;
 }
 
 .section-lead {
@@ -348,12 +365,32 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 4px 16px rgba(43, 58, 68, 0.06);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ホバーでカード上辺に金のラインが走る */
+.item-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold), #e9d3a6);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+  z-index: 2;
+}
+
+.item-card:hover::before {
+  transform: scaleX(1);
 }
 
 .item-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 36px rgba(43, 58, 68, 0.12);
+  transform: translateY(-7px) scale(1.015);
+  box-shadow: 0 20px 44px rgba(43, 58, 68, 0.16);
 }
 
 /* 商品画像プレースホルダー */
@@ -642,14 +679,82 @@ a { color: inherit; text-decoration: none; }
 /* スクロールに合わせてふわっと現れる(JSが .reveal を付与) */
 .reveal {
   opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform: translateY(36px);
+  filter: blur(10px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1), filter 0.9s ease;
   transition-delay: var(--reveal-delay, 0s);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+  filter: none;
+}
+
+/* マーキー(流れる帯文字) */
+.marquee {
+  overflow: hidden;
+  padding: 38px 0;
+  background: var(--color-base);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-flow 32s linear infinite;
+}
+
+.marquee-reverse .marquee-track {
+  animation-direction: reverse;
+}
+
+.marquee-text {
+  font-family: var(--font-en);
+  font-size: clamp(30px, 5vw, 54px);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201, 168, 106, 0.8);
+}
+
+@keyframes marquee-flow {
+  to { transform: translateX(-50%); }
+}
+
+/* スクロールの誘導サイン */
+.scroll-cue {
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: fade-up 1s ease both 1.3s;
+}
+
+.scroll-cue span {
+  font-family: var(--font-en);
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--color-ink-light);
+}
+
+.scroll-cue::after {
+  content: "";
+  width: 1px;
+  height: 48px;
+  background: var(--color-gold);
+  animation: scroll-line 2.2s ease-in-out infinite;
+}
+
+@keyframes scroll-line {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  45%  { transform: scaleY(1); transform-origin: top; }
+  55%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
 /* 動きを減らす設定のユーザーにはアニメーションを無効化 */
@@ -659,7 +764,8 @@ a { color: inherit; text-decoration: none; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal { opacity: 1; transform: none; }
+  .reveal { opacity: 1; transform: none; filter: none; }
+  .marquee-track { animation: none; }
 }
 
 /* ---------- レスポンシブ ---------- */
