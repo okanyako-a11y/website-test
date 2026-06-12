@@ -375,9 +375,48 @@
       <p class="footer-brand">SHADE &amp; CHIC</p>
       <p class="footer-note">本サイトはプロモーション(広告)を含みます。掲載している商品名・価格・説明文はすべてサンプル(仮テキスト)です。</p>
       <p class="footer-copy">&copy; 2026 SHADE &amp; CHIC. All rights reserved.</p>
-      <p class="footer-version">Version 1.1.0</p>
+      <p class="footer-version">Version 1.2.0</p>
     </div>
   </footer>
+
+  <!-- スクロール演出: 要素が画面に入ったら .is-visible を付与 -->
+  <script>
+    (function () {
+      var cards = document.querySelectorAll('.concept-card, .item-card, .tip-card');
+      var heads = document.querySelectorAll('.section .section-eyebrow, .section .section-title, .section .section-lead, .category-title, .cta-title, .cta-lead');
+      cards.forEach(function (el) { el.classList.add('reveal'); });
+      heads.forEach(function (el) { el.classList.add('reveal'); });
+
+      // グリッド内のカードは少しずつ時間差をつける
+      document.querySelectorAll('.concept-grid, .item-grid, .tips-grid').forEach(function (grid) {
+        Array.prototype.forEach.call(grid.children, function (card, i) {
+          card.style.setProperty('--reveal-delay', (i * 0.12) + 's');
+        });
+      });
+
+      function revealAll() {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      if (!('IntersectionObserver' in window)) { revealAll(); return; }
+
+      // 安全装置: IntersectionObserverが動かない環境では全要素を表示する
+      // (正常な環境ではbodyの監視コールバックが即座に呼ばれる)
+      var ioHealthy = false;
+      var probe = new IntersectionObserver(function () { ioHealthy = true; probe.disconnect(); });
+      probe.observe(document.body);
+      setTimeout(function () { if (!ioHealthy) revealAll(); }, 1500);
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 
 </body>
 </html>
