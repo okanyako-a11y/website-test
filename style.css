@@ -32,6 +32,17 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
+/* 見出し類は文節の途中で改行しない
+   keep-all: スペース・<wbr>等でのみ折り返し / auto-phrase: 対応ブラウザでは文節単位 */
+h1, h2, h3, h4 {
+  word-break: keep-all;
+  word-break: auto-phrase;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+p { text-wrap: pretty; }
+
 .container {
   max-width: 1080px;
   margin: 0 auto;
@@ -442,19 +453,21 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 20px 44px rgba(43, 58, 68, 0.16);
 }
 
-/* 商品画像プレースホルダー */
+/* 商品画像(正方形・全体表示) */
 .item-img {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: #fff;
+  border-bottom: 1px solid var(--color-line);
 }
 
 .item-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
@@ -471,22 +484,6 @@ a { color: inherit; text-decoration: none; }
   padding: 6px 18px;
   border-radius: 999px;
 }
-
-.img-parasol-1    { background: linear-gradient(135deg, #a8d4dd, #7db8c6); }
-.img-parasol-2    { background: linear-gradient(135deg, #c5b8d6, #9d8cba); }
-.img-parasol-3    { background: linear-gradient(135deg, #d9c8a9, #bba37b); }
-.img-cardigan-1   { background: linear-gradient(135deg, #cfe3da, #a3c6b8); }
-.img-cardigan-2   { background: linear-gradient(135deg, #f0ddd2, #ddb9a5); }
-.img-cardigan-3   { background: linear-gradient(135deg, #b9c8d8, #8fa6bd); }
-.img-hat-1        { background: linear-gradient(135deg, #e8d5ae, #cdb27f); }
-.img-hat-2        { background: linear-gradient(135deg, #f1e0cb, #dcc1a0); }
-.img-hat-3        { background: linear-gradient(135deg, #aebfc6, #84989f); }
-.img-sunglasses-1 { background: linear-gradient(135deg, #c8d8dc, #9bb6bd); }
-.img-sunglasses-2 { background: linear-gradient(135deg, #c3a98e, #a08263); }
-.img-sunglasses-3 { background: linear-gradient(135deg, #d3cbe0, #aa9dc4); }
-.img-sunscreen-1  { background: linear-gradient(135deg, #fbe3d4, #f2bfa3); }
-.img-sunscreen-2  { background: linear-gradient(135deg, #cce6ea, #9fcdd5); }
-.img-sunscreen-3  { background: linear-gradient(135deg, #fdeec9, #f3d491); }
 
 .item-body {
   padding: 22px 22px 24px;
