@@ -469,6 +469,15 @@ p { text-wrap: pretty; }
   gap: 10px;
   justify-content: center;
   margin-bottom: 48px;
+  position: sticky;
+  top: 62px;
+  z-index: 50;
+  background: var(--color-base-alt);
+  padding: 14px 0;
+  margin-left: -24px;
+  margin-right: -24px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .scene-nav-btn {
