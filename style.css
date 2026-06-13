@@ -373,8 +373,8 @@ p { text-wrap: pretty; }
 
 .section-eyebrow {
   font-family: var(--font-en);
-  font-size: 13px;
-  letter-spacing: 0.4em;
+  font-size: 18px;
+  letter-spacing: 0.35em;
   color: var(--color-accent);
   text-align: center;
   margin-bottom: 12px;
