@@ -177,7 +177,7 @@ p { text-wrap: pretty; }
   text-align: center;
 }
 
-/* 背景スライドショー */
+/* 背景スライドショー(Ken Burns) */
 .hero-slides {
   position: absolute;
   inset: 0;
@@ -189,11 +189,11 @@ p { text-wrap: pretty; }
   background-size: cover;
   background-position: center;
   opacity: 0;
-  animation: hero-fade 15s infinite;
+  animation: hero-fade 15s infinite, ken-burns 15s infinite;
 }
-.hero-slide:nth-child(1) { animation-delay: 0s; }
-.hero-slide:nth-child(2) { animation-delay: 5s; }
-.hero-slide:nth-child(3) { animation-delay: 10s; }
+.hero-slide:nth-child(1) { animation-delay: 0s, 0s; }
+.hero-slide:nth-child(2) { animation-delay: 5s, 5s; }
+.hero-slide:nth-child(3) { animation-delay: 10s, 10s; }
 @keyframes hero-fade {
   0%   { opacity: 0; }
   8%   { opacity: 1; }
@@ -201,43 +201,37 @@ p { text-wrap: pretty; }
   41%  { opacity: 0; }
   100% { opacity: 0; }
 }
+@keyframes ken-burns {
+  0%   { transform: scale(1)    translate(0,    0); }
+  100% { transform: scale(1.07) translate(-1%, -1%); }
+}
 
-/* 水面ゆらぎ */
-.hero-water-shimmer {
+/* 水面ゆらぎレイヤー(下45%のみ) */
+.hero-water-layer {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 55%;
-  z-index: 3;
+  inset: 0;
+  z-index: 1;
+  clip-path: inset(55% 0 0 0);
   pointer-events: none;
-  overflow: hidden;
 }
-.shimmer-ray {
+.hero-water-slide {
   position: absolute;
-  bottom: 0;
-  height: 100%;
-  background: linear-gradient(to top, rgba(255,255,255,0.28), transparent);
-  border-radius: 50%;
-  filter: blur(8px);
-  animation: ray-sway 3s ease-in-out infinite alternate;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  filter: url(#water-ripple);
+  animation: hero-fade 15s infinite, ken-burns 15s infinite;
 }
-.shimmer-ray:nth-child(1) { left:  8%; width: 38px; animation-duration: 2.8s; animation-delay: 0s; }
-.shimmer-ray:nth-child(2) { left: 22%; width: 22px; animation-duration: 3.5s; animation-delay: 0.6s; }
-.shimmer-ray:nth-child(3) { left: 40%; width: 50px; animation-duration: 2.4s; animation-delay: 1.1s; }
-.shimmer-ray:nth-child(4) { left: 58%; width: 28px; animation-duration: 3.2s; animation-delay: 0.3s; }
-.shimmer-ray:nth-child(5) { left: 74%; width: 42px; animation-duration: 2.9s; animation-delay: 0.9s; }
-.shimmer-ray:nth-child(6) { left: 88%; width: 20px; animation-duration: 3.7s; animation-delay: 1.4s; }
-@keyframes ray-sway {
-  0%   { transform: translateX(-10px) scaleX(0.7); opacity: 0.3; }
-  100% { transform: translateX(10px)  scaleX(1.3); opacity: 0.75; }
-}
+.hero-water-slide:nth-child(1) { animation-delay: 0s, 0s; }
+.hero-water-slide:nth-child(2) { animation-delay: 5s, 5s; }
+.hero-water-slide:nth-child(3) { animation-delay: 10s, 10s; }
 
 /* オーバーレイ(テキスト可読性) */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   background: linear-gradient(180deg,
     rgba(255,255,255,0.35) 0%,
     rgba(255,255,255,0.15) 50%,
@@ -246,7 +240,7 @@ p { text-wrap: pretty; }
 
 .hero-inner {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   padding-top: 110px;
   padding-bottom: 120px;
 }

@@ -58,22 +58,33 @@
       <a href="#items" class="btn btn-primary">おすすめアイテムを見る</a>
       <div class="scroll-cue" aria-hidden="true"><span>SCROLL</span></div>
     </div>
-    <!-- 背景スライドショー -->
+    <!-- 水面ゆらぎSVGフィルター -->
+    <svg style="position:absolute;width:0;height:0" aria-hidden="true">
+      <defs>
+        <filter id="water-ripple" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.04" numOctaves="3" seed="8" result="noise">
+            <animate attributeName="baseFrequency"
+              values="0.012 0.040;0.016 0.055;0.012 0.040"
+              dur="6s" repeatCount="indefinite"/>
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="14"
+            xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+    </svg>
+    <!-- 背景スライドショー(Ken Burns) -->
     <div class="hero-slides" aria-hidden="true">
       <div class="hero-slide" style="background-image:url('assets/images/canva/hero-mediterranean-1.jpg')"></div>
       <div class="hero-slide" style="background-image:url('assets/images/canva/hero-mediterranean-2.jpg')"></div>
       <div class="hero-slide" style="background-image:url('assets/images/canva/hero-mediterranean-3.jpg')"></div>
     </div>
-    <div class="hero-overlay" aria-hidden="true"></div>
-    <!-- 水面ゆらぎ -->
-    <div class="hero-water-shimmer" aria-hidden="true">
-      <span class="shimmer-ray"></span>
-      <span class="shimmer-ray"></span>
-      <span class="shimmer-ray"></span>
-      <span class="shimmer-ray"></span>
-      <span class="shimmer-ray"></span>
-      <span class="shimmer-ray"></span>
+    <!-- 水面ゆらぎレイヤー(下45%のみ) -->
+    <div class="hero-water-layer" aria-hidden="true">
+      <div class="hero-water-slide" style="background-image:url('assets/images/canva/hero-mediterranean-1.jpg')"></div>
+      <div class="hero-water-slide" style="background-image:url('assets/images/canva/hero-mediterranean-2.jpg')"></div>
+      <div class="hero-water-slide" style="background-image:url('assets/images/canva/hero-mediterranean-3.jpg')"></div>
     </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
     <!-- 海辺のシーン(きらめき・波) -->
     <div class="hero-scene" aria-hidden="true">
       <span class="sea-sparkle"></span>
