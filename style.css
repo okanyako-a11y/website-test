@@ -51,8 +51,8 @@ p { text-wrap: pretty; }
 
 /* ---------- 広告表記 ---------- */
 .ad-notice {
-  background: #f6f3ec;
-  color: #8a7d62;
+  background: #eef6fa;
+  color: var(--color-ink-light);
   font-size: 11px;
   text-align: center;
   padding: 6px 16px;
@@ -64,7 +64,7 @@ p { text-wrap: pretty; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(253, 252, 249, 0.92);
+  background: rgba(254, 253, 251, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--color-line);
 }
@@ -128,7 +128,7 @@ p { text-wrap: pretty; }
   color: #fff;
   padding: 14px 48px;
   border-radius: 999px;
-  box-shadow: 0 6px 18px rgba(90, 167, 181, 0.35);
+  box-shadow: 0 6px 18px rgba(31, 195, 217, 0.35);
   position: relative;
   overflow: hidden;
 }
@@ -152,7 +152,7 @@ p { text-wrap: pretty; }
 .btn-primary:hover {
   background: var(--color-accent-deep);
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(90, 167, 181, 0.45);
+  box-shadow: 0 10px 24px rgba(31, 195, 217, 0.45);
 }
 
 .btn-detail {
@@ -173,7 +173,7 @@ p { text-wrap: pretty; }
 .hero {
   position: relative;
   overflow: hidden;
-  background: #b8dde6;
+  background: #1a4a6b;
   text-align: center;
 }
 
@@ -394,7 +394,7 @@ p { text-wrap: pretty; }
   display: block;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--color-gold), #e6cf9b);
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-deep));
   margin: 16px auto 0;
   transition: width 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 0.45s;
 }
@@ -510,7 +510,7 @@ p { text-wrap: pretty; }
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--color-gold), #e9d3a6);
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-deep));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease;
@@ -569,7 +569,7 @@ p { text-wrap: pretty; }
   font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--color-accent-deep);
-  background: rgba(90, 167, 181, 0.1);
+  background: rgba(31, 195, 217, 0.1);
   border-radius: 4px;
   display: inline-block;
   align-self: flex-start;
@@ -579,7 +579,7 @@ p { text-wrap: pretty; }
 
 .item-review {
   font-size: 11.5px;
-  color: #c2862e;
+  color: var(--color-accent-deep);
   letter-spacing: 0.06em;
   margin-bottom: 8px;
 }
@@ -685,7 +685,7 @@ p { text-wrap: pretty; }
 
 /* ---------- CTA ---------- */
 .cta {
-  background: linear-gradient(135deg, #5aa7b5, #3d8494, #5aa7b5);
+  background: linear-gradient(135deg, #1FC3D9, #2E5BD7, #1FC3D9);
   background-size: 200% 200%;
   animation: gradient-drift 14s ease infinite;
   color: #fff;
@@ -719,14 +719,14 @@ p { text-wrap: pretty; }
 }
 
 .cta .btn-primary:hover {
-  background: #f3efe6;
+  background: #f0f8fb;
   transform: translateY(-2px);
 }
 
 /* ---------- フッター ---------- */
 .site-footer {
-  background: #2b3a44;
-  color: #b9c5cc;
+  background: #123A5A;
+  color: #a8c4d8;
   text-align: center;
   padding: 56px 0 40px;
 }
@@ -840,7 +840,7 @@ p { text-wrap: pretty; }
   white-space: nowrap;
   text-transform: uppercase;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(201, 168, 106, 0.8);
+  -webkit-text-stroke: 1px rgba(31, 195, 217, 0.6);
 }
 
 @keyframes marquee-flow {
