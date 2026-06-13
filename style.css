@@ -162,14 +162,14 @@ a { color: inherit; text-decoration: none; }
 .hero {
   position: relative;
   overflow: hidden;
-  /* 空 → 光の帯(地平線) → 海 */
+  /* 真昼のリゾート: 淡いアクアの空 → 白い光 → 透けるような海 */
   background: linear-gradient(180deg,
-    #d4ecf2 0%,
-    #e9f5f7 34%,
-    #fdf7e9 58%,
-    #f7ecd4 72%,
-    #d7ecf0 86%,
-    #bfe0e8 100%);
+    #e3f4f7 0%,
+    #f2fafb 32%,
+    #ffffff 56%,
+    #f4fbfc 72%,
+    #e2f3f6 86%,
+    #d2ecf1 100%);
   background-size: 100% 170%;
   animation: sky-drift 26s ease-in-out infinite alternate;
   text-align: center;
@@ -234,7 +234,7 @@ a { color: inherit; text-decoration: none; }
   width: 440px;
   height: 440px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(247, 221, 156, 0.75), rgba(247, 221, 156, 0) 65%);
+  background: radial-gradient(circle, rgba(255, 255, 252, 0.95), rgba(255, 253, 244, 0.5) 38%, rgba(255, 253, 244, 0) 65%);
   animation: sun-breathe 12s ease-in-out infinite alternate;
 }
 
@@ -261,10 +261,11 @@ a { color: inherit; text-decoration: none; }
 .hero-parasol {
   position: absolute;
   right: 9%;
-  bottom: 72px;
-  width: 88px;
+  bottom: 64px;
+  width: 104px;
   height: auto;
-  opacity: 0.5;
+  opacity: 0.9;
+  filter: drop-shadow(0 3px 10px rgba(125, 184, 198, 0.35));
   transform-origin: 50% 95%;
   animation: parasol-sway 8s ease-in-out infinite alternate;
 }
@@ -278,9 +279,10 @@ a { color: inherit; text-decoration: none; }
   display: block;
 }
 
-.wave-back  { height: 108px; fill: rgba(168, 212, 221, 0.45); animation: wave-move 38s linear infinite; }
-.wave-mid   { height: 90px;  fill: rgba(125, 184, 198, 0.5);  animation: wave-move 27s linear infinite; }
-.wave-front { height: 72px;  fill: rgba(90, 167, 181, 0.5);   animation: wave-move 20s linear infinite; }
+.wave-back  { height: 108px; fill: rgba(199, 233, 239, 0.55); animation: wave-move 38s linear infinite; }
+.wave-mid   { height: 90px;  fill: rgba(170, 219, 228, 0.55); animation: wave-move 27s linear infinite; }
+.wave-front { height: 72px;  fill: rgba(140, 205, 216, 0.5);  animation: wave-move 20s linear infinite; }
+.wave-foam  { height: 52px;  fill: rgba(255, 255, 255, 0.75); animation: wave-move 16s linear infinite; }
 
 /* ---------- セクション共通 ---------- */
 .section { padding: 96px 0; }
@@ -841,7 +843,8 @@ a { color: inherit; text-decoration: none; }
   .wave-back  { height: 64px; }
   .wave-mid   { height: 52px; }
   .wave-front { height: 42px; }
-  .hero-parasol { width: 58px; right: 6%; bottom: 38px; }
+  .wave-foam  { height: 30px; }
+  .hero-parasol { width: 66px; right: 6%; bottom: 32px; }
   .sea-sparkle { bottom: 52px; height: 30px; }
   .sun-glow { width: 280px; height: 280px; top: -100px; right: -90px; }
   .hero-lead br { display: none; }
