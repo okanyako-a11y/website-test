@@ -250,9 +250,9 @@ p { text-wrap: pretty; }
   inset: 0;
   z-index: 1;
   background: linear-gradient(180deg,
-    rgba(255,255,255,0.55) 0%,
-    rgba(255,255,255,0.30) 40%,
-    rgba(180,215,230,0.50) 100%);
+    rgba(255,255,255,0.30) 0%,
+    rgba(255,255,255,0.10) 40%,
+    rgba(180,215,230,0.25) 100%);
 }
 
 .hero-inner {
