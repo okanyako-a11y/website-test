@@ -1,16 +1,16 @@
 /* ============================================
-   SHADE & CHIC — おしゃれに日焼け対策して夏を楽しむ
+   SHADE & CHIC — リゾート・ラグジュアリー × UVケア
    ============================================ */
 
 :root {
-  --color-ink: #2b3a44;          /* 基本テキスト(深いブルーグレー) */
-  --color-ink-light: #6b7d88;    /* 補助テキスト */
-  --color-base: #fdfcf9;         /* 背景(温かみのある白) */
-  --color-base-alt: #f2f7f8;     /* セクション交互背景(淡い水色) */
-  --color-accent: #5aa7b5;       /* メインアクセント(ティールブルー) */
-  --color-accent-deep: #3d8494;  /* アクセント濃 */
-  --color-gold: #c9a86a;         /* 上品なゴールド */
-  --color-line: #e3e9ec;         /* 罫線 */
+  --color-ink: #123A5A;          /* 基本テキスト(ネイビー) */
+  --color-ink-light: #4a6578;    /* 補助テキスト */
+  --color-base: #FEFDFB;         /* 背景(澄んだ白) */
+  --color-base-alt: #f0f8fb;     /* セクション交互背景(淡い水色) */
+  --color-accent: #1FC3D9;       /* メインアクセント(ターコイズ) */
+  --color-accent-deep: #2E5BD7;  /* ロイヤルブルー */
+  --color-gold: #F8E6AC;         /* ペールシャンパン(小面積限定) */
+  --color-line: #d8eaf0;         /* 罫線 */
   --font-serif: "Noto Serif JP", serif;
   --font-sans: "Noto Sans JP", sans-serif;
   --font-en: "Cormorant Garamond", serif;
@@ -652,19 +652,13 @@ p { text-wrap: pretty; }
 }
 
 .tip-img span {
-  font-family: var(--font-en);
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  padding: 4px 12px;
-  border-radius: 999px;
+  display: none;
 }
 
-.tip-img-1 { background: linear-gradient(150deg, #b3a4cf, #8a78b0); }
-.tip-img-2 { background: linear-gradient(150deg, #a9cfc3, #7fb3a2); }
-.tip-img-3 { background: linear-gradient(150deg, #d8bd92, #bb9c68); }
-.tip-img-4 { background: linear-gradient(150deg, #f0d3c0, #e0ab8d); }
+.tip-img-1 { background: linear-gradient(150deg, #1FC3D9, #2E5BD7); }
+.tip-img-2 { background: linear-gradient(150deg, #6FE0C9, #1FC3D9); }
+.tip-img-3 { background: linear-gradient(150deg, #2E5BD7, #123A5A); }
+.tip-img-4 { background: linear-gradient(150deg, #FFB3C7, #1FC3D9); }
 
 .tip-body { padding: 26px 26px 28px; }
 
