@@ -173,17 +173,44 @@ p { text-wrap: pretty; }
 .hero {
   position: relative;
   overflow: hidden;
-  /* 真昼のリゾート: 淡いアクアの空 → 白い光 → 透けるような海 */
-  background: linear-gradient(180deg,
-    #e3f4f7 0%,
-    #f2fafb 32%,
-    #ffffff 56%,
-    #f4fbfc 72%,
-    #e2f3f6 86%,
-    #d2ecf1 100%);
-  background-size: 100% 170%;
-  animation: sky-drift 26s ease-in-out infinite alternate;
+  background: #b8dde6;
   text-align: center;
+}
+
+/* 背景スライドショー */
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: hero-fade 15s infinite;
+}
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: 5s; }
+.hero-slide:nth-child(3) { animation-delay: 10s; }
+@keyframes hero-fade {
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  33%  { opacity: 1; }
+  41%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* オーバーレイ(テキスト可読性) */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.35) 0%,
+    rgba(255,255,255,0.15) 50%,
+    rgba(200,230,240,0.40) 100%);
 }
 
 .hero-inner {
@@ -232,7 +259,7 @@ p { text-wrap: pretty; }
 .hero-scene {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
   overflow: hidden;
 }
